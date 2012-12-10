@@ -33,18 +33,5 @@ public class VoxelBarToggleManager {
         return true;
     }
     
-    public static void setupConfig() {
-        try {
-            if (!vb.getDataFolder().isDirectory()) {
-                vb.getDataFolder().mkdirs();
-            }
-            File configf = new File(vb.getDataFolder(), "config.yml");
-            if(!configf.exists()){
-                configf.createNewFile();
-            }  
-        } catch(IOException e) {
-           
-        }
-    }
 
 }
