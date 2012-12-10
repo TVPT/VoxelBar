@@ -21,7 +21,9 @@ public class VoxelBar extends JavaPlugin {
         
         getCommand("vbar").setExecutor(new VoxelBarCommands()); // Register VoxelBarCommands
         
-        saveConfig(); // create config if not created already
+        getConfig().addDefault("players.test", true);
+        getConfig().options().copyDefaults(true);
+        saveConfig();
         
         VoxelBarToggleManager.loadPlayers(); // Load players settings from the config
         
