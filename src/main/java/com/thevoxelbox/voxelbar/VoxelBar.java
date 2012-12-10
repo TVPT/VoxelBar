@@ -5,9 +5,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class VoxelBar extends JavaPlugin {
     private static VoxelBar instance;
+    
+    public static VoxelBar getInstance() {
+        return instance;
+    }
+    
     @Override
     public void onDisable() {  
-        VoxelBarToggleManager.savePlayers();
+        VoxelBarToggleManager.savePlayers(); // save player settings to config
     }
     @Override
     public void onEnable() {
@@ -15,14 +20,12 @@ public class VoxelBar extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new VoxelBarListener(), this); // Register VoxelBarListener
         
         getCommand("vbar").setExecutor(new VoxelBarCommands()); // Register VoxelBarCommands
-        VoxelBarToggleManager.setupConfig();
-        VoxelBarToggleManager.loadPlayers();
+        
+        saveDefaultConfig(); // create config if not created already
+        
+        VoxelBarToggleManager.loadPlayers(); // Load players settings from the config
         
     }
-    public static VoxelBar getInstance() {
-        return instance;
-    }
-
     
 }
 
