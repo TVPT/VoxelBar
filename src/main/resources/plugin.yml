@@ -1,0 +1,18 @@
+author: keto23
+website: http://voxelwiki.com
+database: false
+main: com.thevoxelbox.voxelbar.VoxelBar
+name: VoxelBar
+startup: postworld
+version: 1.0
+description: VoxelBar enables you to quickly scroll through your inventory.
+commands:
+  voxelbar:
+    description: Main command for VoxelBar
+    usage: /<command> [command]
+    aliases: vbar
+    permission-message: You do not have permission to run this command!
+    permission: voxelbar.use
+permissions:
+  voxelbar.use:
+    description: Gives you permission to use VoxelBar!
