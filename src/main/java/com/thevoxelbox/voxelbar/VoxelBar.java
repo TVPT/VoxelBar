@@ -4,7 +4,6 @@ import java.util.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class VoxelBar extends JavaPlugin {
-    public static HashMap<String, Boolean> playersEnabled = new HashMap();
     private static VoxelBar instance;
     @Override
     public void onDisable() {  
