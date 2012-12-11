@@ -1,18 +1,14 @@
 package com.thevoxelbox.voxelbar;
 
-import java.util.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class VoxelBar extends JavaPlugin {
-    private static VoxelBar instance;
     
-    public static VoxelBar getInstance() {
-        return instance;
-    }
+    public VoxelBarToggleManager tm = new VoxelBarToggleManager(this);
     
     @Override
     public void onDisable() {  
-        VoxelBarToggleManager.savePlayers(); // save player settings to config
+        tm.savePlayers();
     }
     @Override
     public void onEnable() {
@@ -20,14 +16,15 @@ public class VoxelBar extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new VoxelBarListener(), this); // Register VoxelBarListener
         
         getCommand("vbar").setExecutor(new VoxelBarCommands()); // Register VoxelBarCommands
+
         
-        getConfig().addDefault("players.test", true);
-        getConfig().options().copyDefaults(true);
-        saveConfig();
+
+        saveDefaultConfig();
         
-        VoxelBarToggleManager.loadPlayers(); // Load players settings from the config
+        tm.loadPlayers();
         
     }
+
     
 }
 
