@@ -3,12 +3,11 @@ package com.thevoxelbox.voxelbar;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class VoxelBar extends JavaPlugin {
-    
-    public VoxelBarToggleManager tm = new VoxelBarToggleManager(this);
+
     
     @Override
     public void onDisable() {  
-        tm.savePlayers();
+        VoxelBarFunctions.savePlayers();
     }
     @Override
     public void onEnable() {
@@ -21,7 +20,7 @@ public class VoxelBar extends JavaPlugin {
 
         saveDefaultConfig();
         
-        tm.loadPlayers();
+        VoxelBarFunctions.loadPlayers();
         
     }
 
