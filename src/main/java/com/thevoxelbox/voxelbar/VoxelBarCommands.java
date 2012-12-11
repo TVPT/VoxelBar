@@ -41,7 +41,7 @@ public class VoxelBarCommands implements CommandExecutor {
                     player.sendMessage(ChatColor.GREEN + "VoxelBar disabled for you - " + ChatColor.DARK_AQUA + "/vbar enable" + ChatColor.GREEN + " to turn it on again!");   
                     return true;
                 }
-                player.sendMessage(ChatColor.GREEN + "VoxelBar already enabled for you! Type " + ChatColor.DARK_AQUA + "/vbar disable" + ChatColor.GREEN + " to disable VoxelBar!");
+                player.sendMessage(ChatColor.GREEN + "VoxelBar already disabled for you! Type " + ChatColor.DARK_AQUA + "/vbar enable" + ChatColor.GREEN + " to enable VoxelBar!");
                 return true;
                     
         
