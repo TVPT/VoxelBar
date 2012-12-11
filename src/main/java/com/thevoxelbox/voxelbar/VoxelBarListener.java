@@ -16,14 +16,14 @@ public class VoxelBarListener implements Listener {
         if ((p.isSneaking())) {
             if ((difference == 1)) {
                 if (p.isOp() || p.hasPermission("voxelbar.use")) {
-                    if (vb.tm.isEnabled(p.getName())) {
+                    if (VoxelBarFunctions.isEnabled(p.getName())) {
                         VoxelBarFunctions.moveInventory(p, 1);
                         p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.DARK_AQUA +"backwards");
                     }
                 }
             } else if ((difference == -1)) {
                 if (p.isOp() || p.hasPermission("voxelbar.use")) {
-                    if (vb.tm.isEnabled(p.getName())) {
+                    if (VoxelBarFunctions.isEnabled(p.getName())) {
                         VoxelBarFunctions.moveInventory(p, 3);
                         p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.GOLD +"forward");   
                     }
