@@ -1,3 +1,10 @@
+/*
+UNUSED FILE AT THE MOMENT
+
+NEED TO FINISH
+*/
+
+
 package com.thevoxelbox.voxelbar;
 
 import org.bukkit.ChatColor;
