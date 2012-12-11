@@ -26,17 +26,17 @@ public class VoxelBarCommands implements CommandExecutor {
         // Set command to the first arg of the command
         command = args[0];
         if (command.equalsIgnoreCase("enable") || command.equalsIgnoreCase("on") || command.equalsIgnoreCase("e")) { // Check if they're running the /vbar enable command
-                if (vb.tm.isEnabled(player.getName())) {
+                if (VoxelBarFunctions.isEnabled(player.getName())) {
                     player.sendMessage(ChatColor.GREEN + "VoxelBar already enabled for you! Type " + ChatColor.DARK_AQUA + "/vbar disable" + ChatColor.GREEN + " to disable VoxelBar!");
                     return true;
                 }
-                vb.tm.setStatus(player.getName(), true);
+                VoxelBarFunctions.setStatus(player.getName(), true);
                 player.sendMessage(ChatColor.GREEN + "VoxelBar enabled for you - " + ChatColor.DARK_AQUA + "/vbar disable" + ChatColor.GREEN + " to turn it off again!");
                 return true;
                 
         } else if (command.equalsIgnoreCase("disable") || command.equalsIgnoreCase("off") || command.equalsIgnoreCase("d")) { // Check if they're running the /vbar disable command
-                if (vb.tm.isEnabled(player.getName())) {
-                    vb.tm.setStatus(player.getName(), false);
+                if (VoxelBarFunctions.isEnabled(player.getName())) {
+                    VoxelBarFunctions.setStatus(player.getName(), false);
                     player.sendMessage(ChatColor.GREEN + "VoxelBar disabled for you - " + ChatColor.DARK_AQUA + "/vbar enable" + ChatColor.GREEN + " to turn it on again!");   
                     return true;
                 }
