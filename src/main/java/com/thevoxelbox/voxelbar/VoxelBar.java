@@ -9,7 +9,7 @@ public class VoxelBar extends JavaPlugin {
         
         getServer().getPluginManager().registerEvents(new VoxelBarListener(), this); // Register VoxelBarListener
         
-        getCommand("vbar").setExecutor(new VoxelBarCommands()); // Register VoxelBarCommands
+        //getCommand("vbar").setExecutor(new VoxelBarCommands()); // Register VoxelBarCommands
  
     }
   
