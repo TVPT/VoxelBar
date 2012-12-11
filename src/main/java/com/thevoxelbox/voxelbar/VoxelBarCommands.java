@@ -2,7 +2,7 @@
 UNUSED FILE AT THE MOMENT
 
 NEED TO FINISH
-*/
+
 
 
 package com.thevoxelbox.voxelbar;
@@ -68,3 +68,4 @@ public class VoxelBarCommands implements CommandExecutor {
     }
     
 }
+*/
