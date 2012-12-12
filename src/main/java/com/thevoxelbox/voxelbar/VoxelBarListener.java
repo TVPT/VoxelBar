@@ -13,14 +13,14 @@ public class VoxelBarListener implements Listener {
         int difference = event.getPreviousSlot() - event.getNewSlot();
         Player p = event.getPlayer();
         if ((p.isSneaking())) {
-            if ((difference == 1) || (difference == -8) {
+            if ((difference == 1) || (difference == -8)) {
                 if (p.isOp() || p.hasPermission("voxelbar.use")) {
                     //if (VoxelBarFunctions.isEnabled(p.getName())) {
                         VoxelBarFunctions.moveInventory(p, 1);
                         p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.DARK_AQUA +"backwards");
                     //}
                 }
-            } else if ((difference == -1) || (difference == 8) {
+            } else if ((difference == -1) || (difference == 8)) {
                 if (p.isOp() || p.hasPermission("voxelbar.use")) {
                     //if (VoxelBarFunctions.isEnabled(p.getName())) {
                         VoxelBarFunctions.moveInventory(p, 3);
