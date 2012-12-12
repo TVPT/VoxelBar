@@ -16,15 +16,17 @@ public class VoxelBarListener implements Listener {
             if ((difference == 1) || (difference == -8)) {
                 if (p.isOp() || p.hasPermission("voxelbar.use")) {
                     //if (VoxelBarFunctions.isEnabled(p.getName())) {
-                        VoxelBarFunctions.moveInventory(p, 1);
-                        p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.DARK_AQUA +"backwards");
+                        //VoxelBarFunctions.moveInventory(p, 1);
+                    VoxelBarFunctions.moveInventory(p, false);    
+                    p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.DARK_AQUA +"upwards");
                     //}
                 }
             } else if ((difference == -1) || (difference == 8)) {
                 if (p.isOp() || p.hasPermission("voxelbar.use")) {
                     //if (VoxelBarFunctions.isEnabled(p.getName())) {
-                        VoxelBarFunctions.moveInventory(p, 3);
-                        p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.GOLD +"forward");   
+                        //VoxelBarFunctions.moveInventory(p, 3);
+                    VoxelBarFunctions.moveInventory(p, true);
+                    p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.GOLD +"downwards");   
                     //}
                 }
             }
