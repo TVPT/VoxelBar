@@ -7,6 +7,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 
 public class VoxelBarListener implements Listener {
+    private VoxelBar vb;
+    public VoxelBarListener(VoxelBar vbp) {
+        vb = vbp;
+    }
     
     @EventHandler
     public void onItemHeldChange(PlayerItemHeldEvent event) {
@@ -15,19 +19,17 @@ public class VoxelBarListener implements Listener {
         if ((p.isSneaking())) {
             if ((difference == 1) || (difference == -8)) {
                 if (p.isOp() || p.hasPermission("voxelbar.use")) {
-                    //if (VoxelBarFunctions.isEnabled(p.getName())) {
-                        //VoxelBarFunctions.moveInventory(p, 1);
-                    VoxelBarFunctions.moveInventory(p, false);    
-                    p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.DARK_AQUA +"upwards");
-                    //}
+                    if (vb.isEnabled(p.getName())) {
+                        VoxelBarFunctions.moveInventory(p, false);
+                        p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.DARK_AQUA +"upwards");
+                    }
                 }
             } else if ((difference == -1) || (difference == 8)) {
                 if (p.isOp() || p.hasPermission("voxelbar.use")) {
-                    //if (VoxelBarFunctions.isEnabled(p.getName())) {
-                        //VoxelBarFunctions.moveInventory(p, 3);
-                    VoxelBarFunctions.moveInventory(p, true);
-                    p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.GOLD +"downwards");   
-                    //}
+                    if (vb.isEnabled(p.getName())) {
+                        VoxelBarFunctions.moveInventory(p, true);
+                        p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.GOLD +"downwards");
+                    }
                 }
             }
         }
