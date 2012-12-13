@@ -1,10 +1,10 @@
-author: keto23
-website: http://voxelwiki.com
+authors: [keto23,przerwap]
+website: https://github.com/TVPT/VoxelBar
 database: false
 main: com.thevoxelbox.voxelbar.VoxelBar
 name: VoxelBar
 startup: postworld
-version: 1.0
+version: 1.2
 description: VoxelBar enables you to quickly scroll through your inventory.
 commands:
   voxelbar:
