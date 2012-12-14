@@ -1,45 +1,44 @@
 package com.thevoxelbox.voxelbar;
 
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class VoxelBar extends JavaPlugin {
-    
-    private YamlConfiguration config;
-    
-    @Override
-    public void onEnable() {
-        
-        getServer().getPluginManager().registerEvents(new VoxelBarListener(this), this); // Register VoxelBarListener
-        
-        getCommand("voxelbar").setExecutor(new VoxelBarCommands(this)); // Register VoxelBarCommands
-        
-        saveDefaultConfig(); // create config if not created already
-        
-        config = (YamlConfiguration) getConfig();
-        
-        
-    }
-    
-    @Override
-    public void onDisable() {
-        reloadConfig();
-    }
-    
-    public boolean isEnabled(String player) {
-        if (config.contains("players." + player)) {
-            return config.getBoolean(player);
+
+    private static final String PLAYERS_CONFIG_PATH = "players.";
+
+    public boolean isEnabled(final String player) {
+        if (this.getConfig().contains(PLAYERS_CONFIG_PATH + player)) {
+            return this.getConfig().getBoolean(PLAYERS_CONFIG_PATH + player);
         }
         return true;
+    }
+
+    @Override
+    public void onDisable() {
+        this.saveConfig();
+    }
+
+    @Override
+    public void onEnable() {
+        // Register VoxelBarListener
+        this.getServer().getPluginManager().registerEvents(new VoxelBarListener(this), this); 
         
+        // Register VoxelBarCommands
+        this.getCommand("voxelbar").setExecutor(new VoxelBarCommands(this));
+
+        // create config if not created already
+        this.saveDefaultConfig();
     }
-    
-    public void setStatus(String player, boolean value) {
-        getConfig().set("players." + player, value);
-        saveConfig();
+
+    /**
+     * Sets the Status of a player.
+     * 
+     * @param player
+     * @param value
+     */
+    public void setStatus(final String player, final boolean value) {
+        this.getConfig().set(PLAYERS_CONFIG_PATH + player, value);
+        this.saveConfig();
     }
-    
+
 }
-
-
-

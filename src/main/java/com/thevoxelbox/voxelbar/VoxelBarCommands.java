@@ -7,35 +7,35 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class VoxelBarCommands implements CommandExecutor {
-    private VoxelBar vb;
-    public VoxelBarCommands(VoxelBar vbp) {
-        vb = vbp;
+    private VoxelBar plugin;
+    public VoxelBarCommands(VoxelBar plugin) {
+        this.plugin = plugin;
     }
     
-    public boolean onCommand(CommandSender cs, Command cmnd, String label, String[] args) {
+    public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
         
-        if (!(cs instanceof Player)) {
-            cs.sendMessage("You cannot use VoxelBar from the console!");
+        if (!(commandSender instanceof Player)) {
+            commandSender.sendMessage("You cannot use VoxelBar from the console!");
             return true;
         }
         
-        Player player = (Player) cs;
-        String command;
+        Player player = (Player) commandSender;
+        String argument;
         
         if (args.length == 0) {
             player.sendMessage(helpMessage());
             return true;
         }
         
-        command = args[0];
+        argument = args[0];
         
-        if (command.equalsIgnoreCase("enable") || command.equalsIgnoreCase("on") || command.equalsIgnoreCase("e")) {
-            VoxelBarFunctions.enableCommand(vb, player);
+        if (argument.equalsIgnoreCase("enable") || argument.equalsIgnoreCase("on") || argument.equalsIgnoreCase("e")) {
+            VoxelBarFunctions.enableCommand(plugin, player);
             return true;
-        } else if (command.equalsIgnoreCase("disable") || command.equalsIgnoreCase("off") || command.equalsIgnoreCase("d")) {
-            VoxelBarFunctions.disableCommand(vb, player);
+        } else if (argument.equalsIgnoreCase("disable") || argument.equalsIgnoreCase("off") || argument.equalsIgnoreCase("d")) {
+            VoxelBarFunctions.disableCommand(plugin, player);
             return true;
-        } else if (command.equalsIgnoreCase("scroll") || command.equalsIgnoreCase("s")) {
+        } else if (argument.equalsIgnoreCase("scroll") || argument.equalsIgnoreCase("s")) {
             VoxelBarFunctions.scrollCommand(player, args);
             return true;
         }
