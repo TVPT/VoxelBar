@@ -10,7 +10,7 @@ public class VoxelBar extends JavaPlugin {
         if (this.getConfig().contains(PLAYERS_CONFIG_PATH + player)) {
             return this.getConfig().getBoolean(PLAYERS_CONFIG_PATH + player);
         }
-        return true;
+        return false;
     }
 
     @Override
