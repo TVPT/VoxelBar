@@ -6,13 +6,13 @@ Commands
 --------
 
 /vbar
-    - Shows a help message
+  - Shows a help message
 
 /vbar [on|off]
-    - Enables/Disables scrolling by crouching
+  - Enables/Disables scrolling by crouching
 
 /vbar scroll [+|-]
-    - Scroll your inventory up/down
+  - Scroll your inventory up/down
 
 
 Permissions
