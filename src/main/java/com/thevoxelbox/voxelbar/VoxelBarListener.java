@@ -3,34 +3,41 @@ package com.thevoxelbox.voxelbar;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 
-public class VoxelBarListener implements Listener {
-    private VoxelBar vb;
-    public VoxelBarListener(VoxelBar vbp) {
-        vb = vbp;
+public class VoxelBarListener implements Listener
+{
+    private VoxelBar plugin;
+
+    public VoxelBarListener(VoxelBar plugin)
+    {
+        this.plugin = plugin;
     }
-    
-    @EventHandler
-    public void onItemHeldChange(PlayerItemHeldEvent event) {
-        int difference = event.getPreviousSlot() - event.getNewSlot();
-        Player p = event.getPlayer();
-        if ((p.isSneaking())) {
-            if ((difference == 1) || (difference == -8)) {
-                if (p.isOp() || p.hasPermission("voxelbar.use")) {
-                    if (vb.isEnabled(p.getName())) {
-                        VoxelBarFunctions.moveInventory(p, false);
-                        p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.DARK_AQUA +"upwards");
-                    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    public void onItemHeldChange(PlayerItemHeldEvent event)
+    {
+        Player player = event.getPlayer();
+
+        if ((player.isOp() || player.hasPermission("voxelbar.use")) && plugin.getConfigurationManager().isScrollingEnabledFor(player))
+        {
+            if (player.isSneaking())
+            {
+                int scrollDelta = VoxelBarFunctions.getDelta(event.getPreviousSlot(), event.getNewSlot(), 9);
+
+                if (scrollDelta == 1)
+                {
+                    VoxelBarFunctions.moveInventory(player, scrollDelta * 9);
+                    player.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.DARK_AQUA + "upwards");
                 }
-            } else if ((difference == -1) || (difference == 8)) {
-                if (p.isOp() || p.hasPermission("voxelbar.use")) {
-                    if (vb.isEnabled(p.getName())) {
-                        VoxelBarFunctions.moveInventory(p, true);
-                        p.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.RESET + ChatColor.UNDERLINE + ChatColor.GOLD +"downwards");
-                    }
+                else if (scrollDelta == -1)
+                {
+                    VoxelBarFunctions.moveInventory(player, scrollDelta * 9);
+                    player.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.GOLD + "downwards");
                 }
+
             }
         }
     }

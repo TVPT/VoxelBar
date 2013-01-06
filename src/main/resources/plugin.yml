@@ -1,10 +1,10 @@
-authors: [keto23,przerwap]
+authors: [keto23, przerwap, MikeMatrix]
 website: https://github.com/TVPT/VoxelBar
 database: false
 main: com.thevoxelbox.voxelbar.VoxelBar
 name: VoxelBar
 startup: postworld
-version: 1.2
+version: maven-version-number
 description: VoxelBar enables you to quickly scroll through your inventory.
 commands:
   voxelbar:

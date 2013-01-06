@@ -1,44 +1,31 @@
 package com.thevoxelbox.voxelbar;
 
+import java.io.File;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class VoxelBar extends JavaPlugin {
-
-    private static final String PLAYERS_CONFIG_PATH = "players.";
-
-    public boolean isEnabled(final String player) {
-        if (this.getConfig().contains(PLAYERS_CONFIG_PATH + player)) {
-            return this.getConfig().getBoolean(PLAYERS_CONFIG_PATH + player);
-        }
-        return false;
-    }
+public class VoxelBar extends JavaPlugin
+{
+    private ConfigurationManager configurationManager;
 
     @Override
-    public void onDisable() {
+    public void onDisable()
+    {
         this.saveConfig();
     }
 
     @Override
-    public void onEnable() {
-        // Register VoxelBarListener
-        this.getServer().getPluginManager().registerEvents(new VoxelBarListener(this), this); 
-        
-        // Register VoxelBarCommands
-        this.getCommand("voxelbar").setExecutor(new VoxelBarCommands(this));
+    public void onEnable()
+    {
+        this.configurationManager = new ConfigurationManager(getConfig(), new File(getDataFolder(), "config.yml"));
 
-        // create config if not created already
-        this.saveDefaultConfig();
+        this.getServer().getPluginManager().registerEvents(new VoxelBarListener(this), this);
+
+        this.getCommand("voxelbar").setExecutor(new CommandVoxelBarExecutor(this));
     }
 
-    /**
-     * Sets the Status of a player.
-     * 
-     * @param player
-     * @param value
-     */
-    public void setStatus(final String player, final boolean value) {
-        this.getConfig().set(PLAYERS_CONFIG_PATH + player, value);
-        this.saveConfig();
+    public ConfigurationManager getConfigurationManager()
+    {
+        return configurationManager;
     }
-
 }

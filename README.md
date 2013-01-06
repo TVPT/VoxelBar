@@ -1,30 +1,23 @@
 VoxelBar
 ========
-Enables you to quickly scroll through rows of your inventory
+Enables you to quickly scroll through rows of your inventory.
 
-Authors: keto23 and przerwap
+Commands
+--------
 
-**Commands:**
+```/vbar```
+    - Shows a help message
 
-/vbar
+```/vbar [on|off]```
+    - Enables/Disables scrolling by crouching
 
-  - Shows a help message
-
-/vbar on
-
-  - Enables scrolling through your inventory by crouching
-
-/vbar off
-
-  - Disables scrolling through your inventory by crouching
-
-/vbar scroll [+/-]
-
-  - Scroll your inventory up/down
+```/vbar scroll [+|-]```
+    - Scroll your inventory up/down
 
 
-**Permissions:**
+Permissions
+-----------
 
-voxelbar.use:
+```voxelbar.use```:
   - Allows you to use all the commands. Also allows you to crouch-scroll through your inventory
 
