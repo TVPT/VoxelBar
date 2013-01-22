@@ -30,12 +30,10 @@ public class VoxelBarListener implements Listener
                 if (scrollDelta == 1)
                 {
                     VoxelBarFunctions.moveInventory(player, scrollDelta * 9);
-                    player.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.DARK_AQUA + "upwards");
                 }
                 else if (scrollDelta == -1)
                 {
                     VoxelBarFunctions.moveInventory(player, scrollDelta * 9);
-                    player.sendMessage(ChatColor.GREEN + "You moved your inventory " + ChatColor.GOLD + "downwards");
                 }
 
             }
