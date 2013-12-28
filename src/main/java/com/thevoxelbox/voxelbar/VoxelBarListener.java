@@ -21,17 +21,13 @@ public class VoxelBarListener implements Listener
     {
         Player player = event.getPlayer();
 
-        if ((player.isOp() || player.hasPermission("voxelbar.use")) && plugin.getConfigurationManager().isScrollingEnabledFor(player))
+        if (player.isSneaking())
         {
-            if (player.isSneaking())
+            if ((player.isOp() || player.hasPermission("voxelbar.use")) && plugin.getConfigurationManager().isScrollingEnabledFor(player))
             {
                 int scrollDelta = VoxelBarFunctions.getDelta(event.getPreviousSlot(), event.getNewSlot(), 9);
 
-                if (scrollDelta == 1)
-                {
-                    VoxelBarFunctions.moveInventory(player, scrollDelta * 9);
-                }
-                else if (scrollDelta == -1)
+                if (scrollDelta == 1 || scrollDelta == -1)
                 {
                     VoxelBarFunctions.moveInventory(player, scrollDelta * 9);
                 }
